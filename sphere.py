@@ -12,12 +12,25 @@ y_sphere = r * np.sin(phi) * np.sin(theta)
 z_sphere = r * np.cos(phi)
 
 # --- 2. THE STRAIGHT LINE DATA ---
-# We define the X, Y, and Z coordinates for the start and end of the line
-# Start point: (0, 0, 0) -> The center
-# End point:   (0, 0, 1) -> The top/North Pole
-x_line = [0, 0]
-y_line = [0, 0]
-z_line = [0, 1]
+print("Enter line start and end coordinates:")
+x_start = float(input("  X start: "))
+x_end   = float(input("  X end:   "))
+y_start = float(input("  Y start: "))
+y_end   = float(input("  Y end:   "))
+z_start = float(input("  Z start: "))
+z_end   = float(input("  Z end:   "))
+
+x_line = [x_start, x_end]
+y_line = [y_start, y_end]
+z_line = [z_start, z_end]
+
+print("\nEnter axis ranges:")
+x_min = float(input("  X axis min: "))
+x_max = float(input("  X axis max: "))
+y_min = float(input("  Y axis min: "))
+y_max = float(input("  Y axis max: "))
+z_min = float(input("  Z axis min: "))
+z_max = float(input("  Z axis max: "))
 
 
 # --- 3. PLOTTING BOTH TOGETHER ---
@@ -43,9 +56,9 @@ fig.add_trace(go.Scatter3d(
 fig.update_layout(
     title="Line Inside a 3D Sphere",
     scene=dict(
-        xaxis=dict(title='X Axis', range=[-1.5, 1.5]),
-        yaxis=dict(title='Y Axis', range=[-1.5, 1.5]),
-        zaxis=dict(title='Z Axis', range=[-1.5, 1.5]),
+        xaxis=dict(title='X Axis', range=[x_min, x_max]),
+        yaxis=dict(title='Y Axis', range=[y_min, y_max]),
+        zaxis=dict(title='Z Axis', range=[z_min, z_max]),
         aspectratio=dict(x=1, y=1, z=1)
     )
 )
